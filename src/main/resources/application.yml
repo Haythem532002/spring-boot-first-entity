@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: firstEntity
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: haythem
+    url: jdbc:postgresql://localhost:5432/postgres
+server:
+  port: 8090
