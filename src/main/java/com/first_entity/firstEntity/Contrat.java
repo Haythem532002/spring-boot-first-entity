@@ -1,8 +1,7 @@
 package com.first_entity.firstEntity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -22,4 +21,9 @@ public class Contrat {
     Specialite specialite;
     boolean archive;
     Integer montantContrat;
+
+    @ManyToOne
+    @JoinColumn(name = "etudiant_id")
+    @JsonBackReference
+    Etudiant etudiant;
 }

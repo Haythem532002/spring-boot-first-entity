@@ -3,9 +3,12 @@ package com.first_entity.firstEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -15,4 +18,7 @@ public class Universite {
     @GeneratedValue
     Integer idUniv;
     String nomUniv;
+
+    @OneToMany
+    List<Departement> departements;
 }

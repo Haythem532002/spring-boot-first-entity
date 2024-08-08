@@ -1,8 +1,6 @@
 package com.first_entity.firstEntity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -16,4 +14,8 @@ public class DetailEquipe {
     Integer idDetailEquipe;
     Integer salle;
     Integer thematique;
+
+    @OneToOne
+    @JoinColumn(name = "equipe_id")
+    Equipe equipe;
 }

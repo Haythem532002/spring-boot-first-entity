@@ -7,9 +7,9 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: haythem
-    url: jdbc:postgresql://localhost:5432/ProjectEntity
+    url: jdbc:postgresql://localhost:5432/projectentities
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     database: postgresql
