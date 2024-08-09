@@ -1,6 +1,5 @@
-package com.first_entity.firstEntity;
+package com.first_entity.firstEntity.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,13 +13,12 @@ import java.util.List;
 @Data
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Departement {
+public class Universite {
     @Id
     @GeneratedValue
-    Integer idDepart;
-    String nomDepart;
+    Integer idUniv;
+    String nomUniv;
 
-    @OneToMany(mappedBy = "departement")
-    @JsonManagedReference
-    List<Etudiant> etudiants;
+    @OneToMany
+    List<Departement> departements;
 }

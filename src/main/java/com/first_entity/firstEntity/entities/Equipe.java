@@ -1,4 +1,4 @@
-package com.first_entity.firstEntity;
+package com.first_entity.firstEntity.entities;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
