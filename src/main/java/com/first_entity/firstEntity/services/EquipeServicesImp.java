@@ -13,7 +13,7 @@ public class EquipeServicesImp implements EquipeServices{
     private final EquipeRepository equipeRepository;
 
     @Override
-    public List<Equipe> retieveAllEquipes() {
+    public List<Equipe> retrieveAllEquipes() {
         return equipeRepository.findAll();
     }
 

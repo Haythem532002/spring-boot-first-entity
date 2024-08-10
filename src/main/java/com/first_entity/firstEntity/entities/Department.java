@@ -14,13 +14,13 @@ import java.util.List;
 @Data
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Departement {
+public class Department {
     @Id
     @GeneratedValue
     Integer idDepart;
     String nomDepart;
 
-    @OneToMany(mappedBy = "departement")
+    @OneToMany(mappedBy = "department")
     @JsonManagedReference
     List<Etudiant> etudiants;
 }

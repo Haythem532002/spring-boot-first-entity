@@ -25,9 +25,9 @@ public class Etudiant {
     List<Contrat> contrats;
 
     @ManyToOne
-    @JoinColumn(name = "departement_id")
+    @JoinColumn(name = "department_id")
     @JsonBackReference
-    Departement departement;
+    Department department;
 
     @ManyToMany(mappedBy = "etudiants")
     List<Equipe> equipes;

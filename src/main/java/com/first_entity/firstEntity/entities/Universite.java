@@ -20,5 +20,5 @@ public class Universite {
     String nomUniv;
 
     @OneToMany
-    List<Departement> departements;
+    List<Department> departments;
 }

@@ -1,12 +1,12 @@
 package com.first_entity.firstEntity.services;
 
-import com.first_entity.firstEntity.entities.Departement;
+import com.first_entity.firstEntity.entities.Department;
 
 import java.util.List;
 
 public interface DepartmentServices {
-    List<Departement> retrieveAllDepartments();
-    Departement addOrUpdateDepartment(Departement departement);
-    Departement retrieveDepartment(Integer idDepartement);
+    List<Department> retrieveAllDepartments();
+    Department addOrUpdateDepartment(Department department);
+    Department retrieveDepartment(Integer idDepartement);
     void removeDepartment(Integer idDepartement);
 }
