@@ -1,12 +1,13 @@
 package com.first_entity.firstEntity.entities;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Data
-@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DetailEquipe {
     @Id
@@ -15,7 +16,7 @@ public class DetailEquipe {
     Integer salle;
     Integer thematique;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "equipe_id")
     Equipe equipe;
 }

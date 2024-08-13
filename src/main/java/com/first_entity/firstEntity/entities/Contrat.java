@@ -2,22 +2,23 @@ package com.first_entity.firstEntity.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
-@Data
-@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Contrat {
     @Id
     @GeneratedValue
     Integer IdContrat;
-    LocalDateTime dateDebutContrat;
-    LocalDateTime dateFinContrat;
+    LocalDate dateDebutContrat;
+    LocalDate dateFinContrat;
     Specialite specialite;
     boolean archive;
     Integer montantContrat;

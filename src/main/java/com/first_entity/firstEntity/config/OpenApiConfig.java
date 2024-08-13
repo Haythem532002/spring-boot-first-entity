@@ -7,8 +7,6 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
 import io.swagger.v3.oas.annotations.servers.Server;
 
-import javax.naming.Name;
-
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(

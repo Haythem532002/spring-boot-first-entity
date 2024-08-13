@@ -2,6 +2,7 @@ package com.first_entity.firstEntity.controllers;
 
 import com.first_entity.firstEntity.entities.Universite;
 import com.first_entity.firstEntity.services.UniversiteServicesImp;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/university")
+@RequestMapping("/universite")
 public class UniversiteRestController {
     private final UniversiteServicesImp universiteServicesImp;
 
@@ -39,5 +40,12 @@ public class UniversiteRestController {
     void deleteUniversite(@PathVariable("id") Integer idUniversite) {
         universiteServicesImp.removeUniversite(idUniversite);
     }
-
+    @Operation(description = "This method assign Universite to Department")
+    @PutMapping("/assign/{id-universite}/{id-dep}")
+    public void assignUniversiteToDepartment(
+            @PathVariable("id-universite") Integer idUniversite,
+            @PathVariable("id-dep") Integer idDep
+    ) {
+        universiteServicesImp.assignUniversiteToDepartment(idUniversite, idDep);
+    }
 }

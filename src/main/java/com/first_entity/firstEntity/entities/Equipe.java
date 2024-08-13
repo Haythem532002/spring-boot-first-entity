@@ -1,14 +1,15 @@
 package com.first_entity.firstEntity.entities;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-@Data
-@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Equipe {
     @Id
@@ -17,7 +18,7 @@ public class Equipe {
     String nomEquipe;
     Niveau niveau;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "detailEquipe_id")
     DetailEquipe detailEquipe;
 
@@ -25,10 +26,10 @@ public class Equipe {
     @JoinTable(
             name = "equipe_etudiant",
             joinColumns = {
-                    @JoinColumn(name = "etudiant_id")
+                    @JoinColumn(name = "equipe_id")
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "equipe_id")
+                    @JoinColumn(name = "etudiant_id")
             }
     )
     List<Etudiant> etudiants;

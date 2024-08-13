@@ -2,7 +2,9 @@ package com.first_entity.firstEntity.services;
 
 
 import com.first_entity.firstEntity.entities.Department;
+import com.first_entity.firstEntity.entities.Etudiant;
 import com.first_entity.firstEntity.repositories.DepartmentRepository;
+import com.first_entity.firstEntity.repositories.EtudiantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DepartmentServicesImp implements DepartmentServices{
     private final DepartmentRepository departmentRepository;
+    private final EtudiantRepository etudiantRepository;
 
     @Override
     public List<Department> retrieveAllDepartments() {
@@ -30,6 +33,14 @@ public class DepartmentServicesImp implements DepartmentServices{
 
     @Override
     public void removeDepartment(Integer idDepartement) {
+        Department department = departmentRepository.findById(idDepartement).orElse(null);
+        if(department!=null) {
+            for(Etudiant etudiant:department.getEtudiants()) {
+                etudiant.setDepartment(null);
+            }
+            etudiantRepository.saveAll(department.getEtudiants());
+        }
+//        department.setEtudiants(null);
         departmentRepository.deleteById(idDepartement);
     }
 }

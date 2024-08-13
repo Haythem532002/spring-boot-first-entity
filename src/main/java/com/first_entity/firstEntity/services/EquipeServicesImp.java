@@ -31,4 +31,6 @@ public class EquipeServicesImp implements EquipeServices{
     public void removeEquipe(Integer idEquipe) {
         equipeRepository.deleteById(idEquipe);
     }
+
+
 }

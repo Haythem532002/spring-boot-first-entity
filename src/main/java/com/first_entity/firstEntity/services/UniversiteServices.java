@@ -9,4 +9,5 @@ public interface UniversiteServices {
     Universite addOrUpdateUniversite(Universite universite);
     Universite retrieveUniversite(Integer idUniversite);
     void removeUniversite(Integer idUniversite);
+    void assignUniversiteToDepartment(Integer idUniversite,Integer idDep);
 }

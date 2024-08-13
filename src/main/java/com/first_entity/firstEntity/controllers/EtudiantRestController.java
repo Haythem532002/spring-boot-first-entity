@@ -3,6 +3,7 @@ package com.first_entity.firstEntity.controllers;
 
 import com.first_entity.firstEntity.entities.Etudiant;
 import com.first_entity.firstEntity.services.EtudiantServicesImp;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,10 +34,31 @@ public class EtudiantRestController {
     List<Etudiant> getAllEtudiant() {
         return etudiantServicesImp.retrieveAllEtudiants();
     }
+
+
     @DeleteMapping("/delete/{id}")
     void deleteEtudiant(
             @PathVariable("id") Integer idEtudiant
     ) {
         etudiantServicesImp.removeEtudiant(idEtudiant);
+    }
+
+    @Operation(description = "This method assign Student to a Department")
+    @PutMapping("/assign/{id-etudiant}/{id-dep}")
+    public Etudiant assignEtudiantToDep(
+            @PathVariable("id-etudiant") Integer idEtudiant,
+            @PathVariable("id-dep")Integer idDep
+    ) {
+        return etudiantServicesImp.assignEtudiantToDep(idEtudiant,idDep);
+    }
+
+    @Operation(description = "This method assing Student to a contrat and equipe")
+    @PutMapping("/addAndAssign/{id-contrat}/{id-equipe}")
+    public Etudiant addAndAssignEtudiantToEquipeAndContrat(
+            @RequestBody Etudiant etudiant,
+            @PathVariable("id-contrat") Integer idContrat,
+            @PathVariable("id-equipe") Integer idEquipe
+    ) {
+        return etudiantServicesImp.addAndAssignEtudiantToEquipeAndContrat(etudiant, idContrat, idEquipe);
     }
 }

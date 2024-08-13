@@ -1,16 +1,18 @@
 package com.first_entity.firstEntity.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-@Data
-@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Etudiant {
     @Id
@@ -22,6 +24,7 @@ public class Etudiant {
 
     @OneToMany(mappedBy = "etudiant")
     @JsonManagedReference
+    @JsonIgnore
     List<Contrat> contrats;
 
     @ManyToOne
@@ -29,6 +32,7 @@ public class Etudiant {
     @JsonBackReference
     Department department;
 
-    @ManyToMany(mappedBy = "etudiants")
+    @ManyToMany(mappedBy = "etudiants",cascade = CascadeType.PERSIST)
+    @JsonIgnore
     List<Equipe> equipes;
 }
