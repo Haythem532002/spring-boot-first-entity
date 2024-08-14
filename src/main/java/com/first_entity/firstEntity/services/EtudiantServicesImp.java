@@ -65,34 +65,29 @@ public class EtudiantServicesImp implements EtudiantServices{
     @Override
     @Transactional
     public Etudiant addAndAssignEtudiantToEquipeAndContrat(Etudiant etudiant, Integer idContrat, Integer idEquipe) {
-        // Save the etudiant first
+
+        Department department = departmentRepository.findById(etudiant.getDepartment().getIdDepart()).orElse(null);
+        etudiant.setDepartment(department);
         etudiantRepository.save(etudiant);
 
-        // Fetch the contrat and equipe entities
         Contrat contrat = contratRepository.findById(idContrat).orElseThrow(() -> new EntityNotFoundException("Contrat not found"));
         Equipe equipe = equipeRepository.findById(idEquipe).orElseThrow(() -> new EntityNotFoundException("Equipe not found"));
 
-        // Associate the contrat with the etudiant
         contrat.setEtudiant(etudiant);
         contratRepository.save(contrat);
 
-        // Add the contrat to the etudiant's contrats list
 
         List<Contrat> contrats = new ArrayList<>();
         contrats.add(contrat);
         etudiant.setContrats(contrats);
 
 
-        // Associate the equipe with the etudiant
         equipe.getEtudiants().add(etudiant);
-//        equipeRepository.save(equipe);
 
-        // Add the equipe to the etudiant's equipes list
         List<Equipe> equipes = new ArrayList<>();
         equipes.add(equipe);
         etudiant.setEquipes(equipes);
 
-        // Save the etudiant again to persist the relationship
         return etudiantRepository.save(etudiant);
     }
 }

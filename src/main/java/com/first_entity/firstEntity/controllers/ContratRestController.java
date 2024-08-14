@@ -2,6 +2,7 @@ package com.first_entity.firstEntity.controllers;
 
 import com.first_entity.firstEntity.entities.Contrat;
 import com.first_entity.firstEntity.services.ContratServicesImp;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,5 +43,15 @@ public class ContratRestController {
             @PathVariable("id") Integer idContrat
     ) {
         contratServicesImp.removeContrat(idContrat);
+    }
+
+    @Operation(description = "This method assign Contrat to Etudiant")
+    @PutMapping("/assign/{nom}/{prenom}")
+    Contrat assignContratToEtudiant(
+            @RequestBody Contrat contrat,
+            @PathVariable("nom") String Nom,
+            @PathVariable("prenom") String Prenom
+    ) {
+        return contratServicesImp.assignContratToEtudiant(contrat, Nom,Prenom);
     }
 }

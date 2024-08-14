@@ -27,7 +27,7 @@ public class Etudiant {
     @JsonIgnore
     List<Contrat> contrats;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "department_id")
     @JsonBackReference
     Department department;
