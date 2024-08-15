@@ -24,7 +24,6 @@ public class Etudiant {
 
     @OneToMany(mappedBy = "etudiant")
     @JsonManagedReference
-    @JsonIgnore
     List<Contrat> contrats;
 
     @ManyToOne(cascade = CascadeType.PERSIST)

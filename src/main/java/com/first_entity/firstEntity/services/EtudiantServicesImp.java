@@ -90,4 +90,15 @@ public class EtudiantServicesImp implements EtudiantServices{
 
         return etudiantRepository.save(etudiant);
     }
+
+    @Override
+    public List<Etudiant> getEtudiantsByDepartment(Integer idDepartment) {
+        Department department = departmentRepository.findById(idDepartment).orElse(null);
+        if(department!=null) {
+            return department.getEtudiants();
+        }
+        return null;
+    }
+
+
 }

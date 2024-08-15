@@ -18,6 +18,6 @@ public class Universite {
     Integer idUniv;
     String nomUniv;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     List<Department> departments;
 }

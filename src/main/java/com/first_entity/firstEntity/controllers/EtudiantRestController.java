@@ -61,4 +61,13 @@ public class EtudiantRestController {
     ) {
         return etudiantServicesImp.addAndAssignEtudiantToEquipeAndContrat(etudiant, idContrat, idEquipe);
     }
+
+    @Operation(description = "This method get all students that beong to the same department")
+    @GetMapping("/getEtudiantsByDepartment/{id-department}")
+    public List<Etudiant> getEtudiantsByDepartment(
+            @PathVariable("id-department") Integer idDepartment
+    ) {
+        return etudiantServicesImp.getEtudiantsByDepartment(idDepartment);
+    }
+
 }
