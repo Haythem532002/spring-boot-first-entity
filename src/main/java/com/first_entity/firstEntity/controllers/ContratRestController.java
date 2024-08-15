@@ -4,8 +4,10 @@ import com.first_entity.firstEntity.entities.Contrat;
 import com.first_entity.firstEntity.services.ContratServicesImp;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -53,5 +55,13 @@ public class ContratRestController {
             @PathVariable("prenom") String Prenom
     ) {
         return contratServicesImp.assignContratToEtudiant(contrat, Nom,Prenom);
+    }
+
+    @GetMapping("/countContrat/{d1}/{d2}")
+    public Integer countContratsValides(
+            @PathVariable("d1") @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate startDate,
+            @PathVariable("d2") @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate endDate
+            ) {
+        return contratServicesImp.nbContratsValides(startDate, endDate);
     }
 }

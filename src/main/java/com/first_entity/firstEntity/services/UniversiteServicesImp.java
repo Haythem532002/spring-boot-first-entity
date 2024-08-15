@@ -53,4 +53,13 @@ public class UniversiteServicesImp implements UniversiteServices{
         }
         universiteRepository.save(universite);
     }
+
+    @Override
+    public List<Department> retrieveDepartmentsByUniversite(Integer idUniversite) {
+        Universite universite = universiteRepository.findById(idUniversite).orElse(null);
+        if(universite!=null) {
+            return universite.getDepartments();
+        }
+        return null;
+    }
 }

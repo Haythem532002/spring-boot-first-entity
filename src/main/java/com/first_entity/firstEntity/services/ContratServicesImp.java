@@ -7,8 +7,8 @@ import com.first_entity.firstEntity.repositories.EtudiantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,5 +44,10 @@ public class ContratServicesImp implements ContratServices {
             contratRepository.save(contrat);
         }
         return contrat;
+    }
+
+    @Override
+    public Integer nbContratsValides(LocalDate startDate, LocalDate endDate) {
+        return contratRepository.countByDateDebutContratBetween(startDate,endDate);
     }
 }
